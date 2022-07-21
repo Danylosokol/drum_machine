@@ -13,7 +13,7 @@ body {
   line-height: 140%;
 }
 
-#root {
+#root{
   width: 75vw;
   margin: 0 auto;
   height: 100%;
@@ -25,18 +25,16 @@ a {
   text-decoration: none;
 }
 
-#drum-machine {
+#drum-machine{
   width: 20rem;
 }
 
-.grid-container {
+.grid-container{
   display: grid;
   grid-template-columns: auto auto auto;
 }
 
-.drum-pad {
+.drum-pad{
   background-color: red;
   border: 2px solid black;
 }
-
-/*# sourceMappingURL=index.css.map */
