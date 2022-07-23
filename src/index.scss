@@ -13,9 +13,9 @@ $border-radius: .7rem;
 }
 
 body {
-  color: $main-dark;
   background-color: $main-dark;
-  font-family: sans-serif;
+  color: $main-dark;
+  font-family: 'VT323', monospace;
   font-size: 18px;
   font-weight: 400;
   line-height: 140%;
@@ -27,38 +27,43 @@ a {
 }
 
 #root{
-  width: 75vw;
-  margin: 0 auto;
-  min-height: 100vh;
-  padding-bottom: 15vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: 15vh;
+  width: 75vw;
 }
 
 #drum-machine{
-  width: 100%;
-  height: 40vh;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
   background-color: $main-light;
   border-radius: $border-radius;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 45rem;
+  min-height: 40vh;
+  padding: 2rem;
+  width: 100%;
 }
 
 .grid-container{
-  width: 20rem;
   display: grid;
-  grid-template-columns: auto auto auto;
   gap: .25rem;
+  grid-template-columns: auto auto auto;
+  width: 20rem;
 }
 
 .drum-pad{
-  height: 5rem;
-  color: $main-text;
   background-color: $accent-dark;
   border: none;
   border-radius: $border-radius;
+  color: $main-text;
+  font-size: 2rem;
+  height: 5rem;
 }
 
 .drum-pad.clicked{
@@ -69,57 +74,67 @@ a {
   background-color: $accent-light;
 }
 
+.drum-pad:focus-visible{
+  outline: none;
+}
+
 .controls{
-  width: 50%;
   display: flex;
   flex-direction: column;
+  font-size: 1.75rem;
+  height: 16rem;
   justify-content: space-around;
+  padding-left: 2.5rem;
+  width: 15rem;
 }
 
 #display{
+  background-color: $main-text;
+  border-radius: $border-radius;
+  color: $main-dark;
+  height: 2rem;
+  padding: .25rem;
   width: 10rem;
-  height: 1.5rem;
-  background-color: #fff;
 }
 
 .switch{
-  position: relative;
   display: inline-block;
-  width: 4rem;
   height: 2rem;
-  margin-left: 1rem;
+  margin-left: .5rem;
+  position: relative;
+  width: 4rem;
 }
 
 .switch input{
+  height: 0;
   opacity: 0;
   width: 0;
-  height: 0;
 }
 
 .slider{
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  background-color: $main-text;
+  border-radius: 2rem;
   bottom: 0;
-  background-color: #ccc;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   -webkit-transition: .4s;
   transition: .4s;
-  border-radius: 2rem;
 }
 
 .slider:before{
-  position: absolute;
+  background-color: $main-dark;
+  border-radius: 100%;
+  bottom: .2rem;
   content: "";
   height: 1.6rem;
-  width: 1.6rem;
   left: .2rem;
-  bottom: .2rem;
-  background-color: white;
+  position: absolute;
   -webkit-transition: .4s;
   transition: .4s;
-  border-radius: 100%;
+  width: 1.6rem;
 }
 
 input:checked + .slider{
@@ -136,7 +151,41 @@ input:checked + .slider:before{
   transform: translateX(2rem);
 }
 
-input[type=range]{
-  color: $accent-dark;
+.volume-slider{
+  appearance: none;
+  -webkit-apperance: none;
+  background-color: $main-text;
+  border-radius: $border-radius;
+  height: 1rem;
+  outline:  none;
+  width: 10rem;
 }
 
+.volume-slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $main-dark;
+  border-radius: 100%;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.volume-slider::-moz-range-thumb{
+  background-color: $main-dark;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+@media screen and (max-width: 500px){
+  #root{
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 400px){
+  #drum-machine{
+    padding: 1rem .25rem;
+  }
+}

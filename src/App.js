@@ -1,5 +1,4 @@
 import React from 'react';
-// import DrumPad from './DrumPad';
 
 class App extends React.Component {
   constructor(props) {
@@ -58,7 +57,7 @@ class App extends React.Component {
 
   handleKey(event) {
     const keys = ["q", "w", "e", "a", "s", "d", "z", "x", "c"];
-    if(event.key in keys){
+    if(keys.includes(event.key)){
       const id = document.getElementById(event.key.toUpperCase()).parentElement
         .id;
       this.updateState(id);
@@ -66,6 +65,8 @@ class App extends React.Component {
         const audio = document.getElementById(event.key.toUpperCase());
         this.playSound(audio);
       }
+    }else{
+      console.log(event.key);
     }
   }
 
@@ -320,6 +321,7 @@ class App extends React.Component {
           </div>
           <div>
             <input
+              className="volume-slider"
               type="range"
               min="1"
               max="100"
