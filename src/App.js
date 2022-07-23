@@ -45,6 +45,8 @@ class App extends React.Component {
         volume: event.target.value,
         audioData: `Volume: ${event.target.value}`,
       });
+      let audio = document.querySelectorAll("audio");
+      audio.forEach((audio) => audio.volume = event.target.value / 100);
     }
   }
 
@@ -56,8 +58,8 @@ class App extends React.Component {
   }
 
   handleKey(event) {
-    const keys = ["q", "w", "e", "a", "s", "d", "z", "x", "c"];
-    if(keys.includes(event.key)){
+    const keys = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
+    if(keys.includes(event.key.toUpperCase())){
       const id = document.getElementById(event.key.toUpperCase()).parentElement
         .id;
       this.updateState(id);
@@ -65,8 +67,6 @@ class App extends React.Component {
         const audio = document.getElementById(event.key.toUpperCase());
         this.playSound(audio);
       }
-    }else{
-      console.log(event.key);
     }
   }
 
